@@ -1,7 +1,6 @@
 package com.hell.sinnervista.Models;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "sinner")
@@ -11,7 +10,6 @@ public class Sinner {
     private Integer id;
     private String name;
     private String surname;
-    private Date joinDate;
     private HellCircle hellCircle;
 
     public Sinner(){
@@ -21,15 +19,6 @@ public class Sinner {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        setJoinDate();
-        this.hellCircle = hellCircle;
-    }
-
-    public Sinner(Integer id, String name, String surname, Date joinDate, HellCircle hellCircle) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.joinDate = joinDate;
         this.hellCircle = hellCircle;
     }
 
@@ -55,14 +44,6 @@ public class Sinner {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public Date getJoinDate() {
-        return joinDate;
-    }
-
-    public void setJoinDate() {
-        this.joinDate = new Date();
     }
 
     public HellCircle getHellCircle() {
