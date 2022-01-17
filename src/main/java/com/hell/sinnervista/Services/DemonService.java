@@ -20,10 +20,22 @@ public class DemonService {
     }
 
     public Demon getDemonById(Integer id){
-        return this.demonRepository.findDemonById(id);
+        return this.demonRepository.getById(id);
+    }
+
+    public void createDemon(String name){
+        Demon demon = new Demon(null, name);
+        this.demonRepository.save(demon);
     }
 
     public void deleteDemonById(Integer id){
         this.demonRepository.deleteById(id);
+    }
+
+    public void createExampleDemons(){
+        String[] demonNames = {"Azazel", "Baal", "Beelzebub", "Saael", "Asmodan", "Bob"};
+        for(int i = 0; i <= 5; i++){
+            createDemon(demonNames[i]);
+        }
     }
 }

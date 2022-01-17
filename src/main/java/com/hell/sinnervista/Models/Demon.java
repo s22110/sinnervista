@@ -11,8 +11,6 @@ public class Demon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Sinner> sinners;
 
     public Demon() {
     }
@@ -36,13 +34,5 @@ public class Demon {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Sinner> getSinners() {
-        return sinners;
-    }
-
-    public void setSinners(List<Sinner> sinners) {
-        this.sinners = sinners;
     }
 }

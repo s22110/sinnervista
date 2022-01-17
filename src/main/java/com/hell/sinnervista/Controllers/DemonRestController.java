@@ -2,7 +2,6 @@ package com.hell.sinnervista.Controllers;
 
 import com.hell.sinnervista.Models.Demon;
 import com.hell.sinnervista.Services.DemonService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +14,8 @@ public class DemonRestController {
 
     public DemonRestController(DemonService demonService) {
         this.demonService = demonService;
+
+        demonService.createExampleDemons();
     }
 
     @GetMapping
@@ -32,9 +33,15 @@ public class DemonRestController {
         return ResponseEntity.ok(demon);
     }
 
+    @PostMapping("create/{name}")
+    public ResponseEntity<String> createDemon(@PathVariable String name){
+        demonService.createDemon(name);
+        return ResponseEntity.ok("Created demon named: " + name);
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteDemonById(@PathVariable Integer id){
-            demonService.deleteDemonById(id);
-            return ResponseEntity.ok("Deleted demon with id: " + id);
+        demonService.deleteDemonById(id);
+        return ResponseEntity.ok("Deleted demon with id: " + id);
     }
 }
