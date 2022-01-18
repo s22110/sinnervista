@@ -3,7 +3,7 @@ package com.hell.sinnervista.Models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "sinner")
+@Table(name = "Sinner")
 public class Sinner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

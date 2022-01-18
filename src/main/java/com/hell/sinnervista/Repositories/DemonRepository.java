@@ -5,9 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.hell.sinnervista.Models.Demon;
 
-import java.util.List;
-
-
 @Repository
 public interface DemonRepository extends JpaRepository<Demon, Integer> {
 }

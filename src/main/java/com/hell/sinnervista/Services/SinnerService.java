@@ -5,8 +5,8 @@ import com.hell.sinnervista.Models.Sinner;
 import com.hell.sinnervista.Repositories.SinnerRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SinnerService {
@@ -21,16 +21,19 @@ public class SinnerService {
     }
 
     public Sinner getSinnerById(Integer id){
-        return sinnerRepository.getById(id);
+        Optional<Sinner> sinner = sinnerRepository.findById(id);
+        return sinner.orElse(null);
     }
 
     public List<Sinner> getSinnersByHellCircle(HellCircle hellCircle){
         return sinnerRepository.findSinnersByHellCircle(hellCircle);
     }
 
-    public void createSinner(String name, String surname, HellCircle hellCircle){
+    public Sinner createSinner(String name, String surname, HellCircle hellCircle){
         Sinner sinner = new Sinner(null, name, surname, hellCircle);
-        this.sinnerRepository.save(sinner);
+        sinnerRepository.save(sinner);
+
+        return sinner;
     }
 
     public void createExampleSinners(){
